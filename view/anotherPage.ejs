@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submitted Data</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.add-to-cart-button').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var index = this.getAttribute('data-index');
+                    console.log("Adding to cart:", index);
+                    var form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '/addcart';
+
+                    var hiddenField = document.createElement('input');
+                    hiddenField.type = 'hidden';
+                    hiddenField.name = 'Cart';
+                    hiddenField.value = index;
+
+                    form.appendChild(hiddenField);
+                    document.body.appendChild(form);
+                    form.submit();
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <% if (titles && titles.length) { %>
+            <form action="/liked" method="POST">
+                <% titles.forEach((title, index) => { %>
+                    <div>
+                        <input type="checkbox" name="liked[]" value="<%= index %>"/>♡ 
+                        <h1><strong><%= title %></strong></h1>
+                    </div>
+                    <% if (Hashtags[index]) { %>
+                        <b><p><strong>Hashtag:</strong> <%= Hashtags[index] %></p></b>
+                    <% } %>
+                    <% if (Selecteds[index]) { %>
+                        <h2>Selected Items</h2>
+                        <% if (Selecteds[index].length > 0) { %>
+                            <ul>
+                                <% Selecteds[index].forEach(item => { %>
+                                    <li><%= item %></li>
+                                <% }); %>
+                            </ul>
+                            <button type="button" class="add-to-cart-button" data-index="<%= index %>">🛒 Add to Cart</button>
+                        <% } else { %>
+                            <p>No items selected.</p>
+                        <% } %>
+                    <% } %>
+                <% }); %>
+                <button type="submit">♡ Liked Posts</button>
+            </form>
+            <form action="/cart" method="POST">
+                <button type="submit">Cart</button>
+            </form>
+        <% } else { %>
+            <p>No titles available.</p>
+        <% } %>
+    </div>
+    <form action="/newpost" method="POST">
+        <button type="submit"> + Add Posts</button>
+    </form>
+</body>
+</html>

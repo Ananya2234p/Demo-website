@@ -1,0 +1,22 @@
+<div>
+<form action="/anotherPage" method="POST">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title"  name="title"><br>
+    <label for="hashtags">Hashtags:</label><br>
+    <input type="text" id="hashtags" name="hashtags">
+    <h1>Selected Items</h1>
+    <% if (selectedItems && selectedItems.length > 0) { %>
+        <ul>
+            <% selectedItems.forEach(item => { %>
+                <li><%= item %>
+                    <input type="hidden" name="selectedItems[]" value="<%= item %>">
+                
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No items selected.</p>
+    <% } %>
+    <button type="submit">Post</button>
+</form>
+</div>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submitted Data</title>
+</head>
+<body>
+    <div>
+        <% if(liked && liked.length){%>
+        <% liked.forEach((title,index)=> { %>
+                    <div>
+                    <h1><strong><%= title %></strong></h1>
+                    </div>
+                <% if (Hashtags[index]) { %>
+                    <b><p><strong>Hashtag:</strong> <%= Hashtags[index] %></p></b>
+                <% } %>
+                <% if (Selecteds[index]) { %>
+                    <h2>Selected Items</h2>
+                    <% if (Selecteds[index].length > 0) { %>
+                        <ul>
+                            <% Selecteds[index].forEach(item => { %>
+                                <li><%= item %></li>
+                            <% }); %>
+                        </ul>
+                    <% } else { %>
+                        <p>No items selected.</p>
+                    <% } %>
+                <% } %>
+            <% }); %>
+        <% } else {%>
+            <p> No liked posts </p>
+        <%}%>
+    </div>
+</body>
+</html>

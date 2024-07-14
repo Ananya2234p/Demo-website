@@ -1,0 +1,33 @@
+<h1>Welcome to Demo</h1>
+<form action="/submit" method="POST">
+<% if (locals.items) { %>
+<div>
+    <input type="checkbox" name="selected[]" value="0"/><h1><%= items[0] %></h1>
+</div>
+
+<div>
+    <input type="checkbox" name="selected[]" value="1"/><h1><%= items[1] %></h1>
+</div>
+ 
+<div>
+    <input type="checkbox" name="selected[]" value="2"/><h1><%= items[2] %></h1>
+</div>
+
+<div>
+    <input type="checkbox" name="selected[]" value="3"/><h1><%= items[3] %></h1>
+</div>
+
+<div>
+    <input type="checkbox" name="selected[]" value="4"/><h1><%= items[4] %></h1>
+</div>
+
+<div>
+    <input type="checkbox" name="selected[]" value="5"/><h1><%= items[5] %></h1>
+</div>
+
+<div>
+    <input type="checkbox" name="selected[]" value="6"/><h1><%= items[6] %></h1>
+</div>
+<% } %>
+    <button type="submit"> Submit</button>
+</form>

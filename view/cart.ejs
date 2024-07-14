@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submitted Data</title>
+</head>
+<body>
+    <div>
+        <% if (cart && cart.length) { %>
+            <% cart.forEach(item => { %>
+                <div>
+                    <h1><strong><%= item %></strong></h1>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No items selected.</p>
+        <% } %>
+    </div>
+</body>
+</html>
